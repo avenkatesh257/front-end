@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery.js"></script>
+
+</head>
+
+ <body>
+	<input type="search" name="q" placeholder="Search by Subject">
+    <input type="button" onclick="diplayBooks()" value="Go">
+
+<script> 
+
+
+ function displayBooks(start, end){
+ 	   var searchInput = $('#search').val();
+   console.log(searchInput);
+        $.get("https://www.googleapis.com/books/v1/volumes?q=subject"), {q: subject.searchInput, startIndex: 0, maxResults: 20}, 
+        function(data){ 
+
+$.each(data.items.slice(start,end), function(index, value) {
+            var img = $('<img>');
+            img.attr('src', value.volumeInfo.imageLinks.thumbnail);
+            img.appendTo('#image-div');
+          });
+      };
+
+      }
+      
+      displayBooks(0,5);
+	</script>
+</body>
+
+
+
+
+
+
+</html>
